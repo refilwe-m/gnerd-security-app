@@ -1,12 +1,12 @@
 import "tailwindcss/tailwind.css";
 import "./App.css";
-import { Heading } from "./components";
+import { AppTemplate, Heading } from "./components";
 
 function App() {
   return (
-    <>
+    <AppTemplate>
       <Heading />
-    </>
+    </AppTemplate>
   );
 }
 
