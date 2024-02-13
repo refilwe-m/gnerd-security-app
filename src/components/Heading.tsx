@@ -2,9 +2,9 @@ import React from "react";
 
 const Heading: React.FC = () => {
   return (
-    <div className="p-4">
-      <h1 className="text-4xl font-bold mb-4 text-white">GneRd Vault</h1>
-    </div>
+    <header className="p-20 flex items-center justify-center w-screen w-full">
+      <h1 className="text-9xl font-bold justify text-white">GneRd Vault</h1>
+    </header>
   );
 };
 
