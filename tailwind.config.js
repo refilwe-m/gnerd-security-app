@@ -6,6 +6,10 @@ export default {
       backgroundColor: {
         background: "#0D1117",
       },
+      colors: {
+        purple: "#773FC7",
+        green: "#3FB950",
+      },
     },
   },
   plugins: [],
