@@ -1,11 +1,8 @@
 import "tailwindcss/tailwind.css";
+import "./App.css";
 
 function App() {
-  return (
-    <>
-      <div className="h-screen w-screen bg-background"></div>
-    </>
-  );
+  return <></>;
 }
 
 export default App;
