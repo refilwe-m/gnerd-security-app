@@ -1,6 +1,6 @@
-import React from "react";
+import { FC } from "react";
 
-const Heading: React.FC = () => {
+const Heading: FC = () => {
   return (
   <header className="p-20 flex items-center justify-center w-full">
       <h1 className="text-9xl font-bold justify text-white">
