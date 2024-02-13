@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const Heading: FC = () => {
+export const Heading: FC = () => {
   return (
   <header className="p-20 flex items-center justify-center w-full">
       <h1 className="text-9xl font-bold justify text-white">
@@ -10,5 +10,3 @@ const Heading: FC = () => {
     </header>
   );
 };
-
-export default Heading;
