@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage, FieldProps } from "formik";
 import { FC } from "react";
-import { Button, InputField } from "..";
+import { Button, InputField } from "../../common";
 
 interface FormValues {
   website: string;
@@ -33,9 +33,7 @@ export const InputForm: FC = () => {
     return errors;
   };
 
-  const handleSubmit = () => {
-
-  };
+  const handleSubmit = () => {};
 
   return (
     <Formik
@@ -46,7 +44,7 @@ export const InputForm: FC = () => {
       <Form className="flex flex-col items-center gap-3">
         <Field
           name="website"
-          render={({field}: FieldProps) => (
+          render={({ field }: FieldProps) => (
             <>
               <InputField {...field} placeholder={"Website"} />
               <ErrorMessage
@@ -59,7 +57,7 @@ export const InputForm: FC = () => {
         />
         <Field
           name="username"
-          render={({field}: FieldProps) => (
+          render={({ field }: FieldProps) => (
             <>
               <InputField {...field} placeholder={"Username"} />
               <ErrorMessage
@@ -72,7 +70,7 @@ export const InputForm: FC = () => {
         />
         <Field
           name="password"
-          render={({field}: FieldProps) => (
+          render={({ field }: FieldProps) => (
             <>
               <InputField {...field} placeholder={"Password"} />
               <ErrorMessage
@@ -83,7 +81,7 @@ export const InputForm: FC = () => {
             </>
           )}
         />
-        <Button btnStyles="filled" onClick={handleSubmit} >
+        <Button btnStyles="filled" onClick={handleSubmit}>
           Add Credentials
         </Button>
       </Form>

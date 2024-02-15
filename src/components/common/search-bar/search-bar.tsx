@@ -1,9 +1,10 @@
 import { useState, Fragment } from "react";
 import { Combobox, Transition } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
-import { useAppStore } from "../stores";
+import { IoIosSearch } from "react-icons/io";
+import { HiCheck } from "react-icons/hi";
+import { useAppStore } from "../../../stores";
 
-export function Search() {
+export const SearchBar = () => {
   const { vault } = useAppStore();
   const [selectedVault, setSelectedVault] = useState(null);
   const [query, setQuery] = useState("");
@@ -16,7 +17,7 @@ export function Search() {
         });
 
   return (
-    <nav className="top-16 w-72">
+    <section className="top-16 w-72">
       <Combobox value={selectedVault} onChange={setSelectedVault}>
         <div className="relative mt-1">
           <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
@@ -25,10 +26,7 @@ export function Search() {
               onChange={(event) => setQuery(event.target.value)}
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
-              <ChevronUpDownIcon
-                className="h-5 w-5 text-gray-400"
-                aria-hidden="true"
-              />
+              <IoIosSearch className="h-5 w-5 text-gray-400" />
             </Combobox.Button>
           </div>
           <Transition
@@ -69,7 +67,7 @@ export function Search() {
                               active ? "text-white" : "text-teal-600"
                             }`}
                           >
-                            <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                            <HiCheck className="h-5 w-5" aria-hidden="true" />
                           </span>
                         ) : null}
                       </>
@@ -81,6 +79,6 @@ export function Search() {
           </Transition>
         </div>
       </Combobox>
-    </nav>
+    </section>
   );
-}
+};
