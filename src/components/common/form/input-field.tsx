@@ -1,7 +1,7 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { FC } from "react";
 
-interface MyFormProps {
+interface PlaceholderProp {
   placeholderText: string;
 }
 
@@ -9,13 +9,13 @@ interface MyFormValues {
   myField: string;
 }
 
-export const InputField: FC<MyFormProps> = ({ placeholderText }) => {
+export const InputField: FC<PlaceholderProp> = ({ placeholderText }) => {
   const initialValues: MyFormValues = {
     myField: "",
   };
 
-  const handleSubmit = (values: MyFormValues) => {
-    console.log(values);
+  const handleSubmit = (values: MyFormValues, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
+    setSubmitting(false);
   };
 
   return (

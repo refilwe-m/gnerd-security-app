@@ -3,9 +3,6 @@ import "./App.css";
 import { AppTemplate, Button, Heading, InputField } from "./components";
 
 function App() {
-  function hep() {
-    console.log("Heyy");
-  }
   return (
     <AppTemplate>
       <Heading />
