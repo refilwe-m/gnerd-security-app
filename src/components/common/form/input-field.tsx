@@ -1,35 +1,15 @@
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import { FC } from "react";
+import React, { InputHTMLAttributes } from 'react';
 
-interface PlaceholderProp {
-  placeholderText: string;
+interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+  placeholder: string;
 }
 
-interface MyFormValues {
-  myField: string;
-}
-
-export const InputField: FC<PlaceholderProp> = ({ placeholderText }) => {
-  const initialValues: MyFormValues = {
-    myField: "",
-  };
-
-  const handleSubmit = (values: MyFormValues, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
-    setSubmitting(false);
-  };
-
+export const InputField: React.FC<InputFieldProps> = ({ placeholder, ...rest }) => {
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-      <Form className="py-3 lg:w-1/4 ">
-        <Field
-          className="py-3 font-bold w-full px-6 rounded-lg"
-          type="text"
-          id="myField"
-          name="myField"
-          placeholder={placeholderText}
-        />
-        <ErrorMessage name="myField" component="div" />
-      </Form>
-    </Formik>
+    <input
+      className="border rounded-lg py-2 px-3"
+      placeholder={placeholder}
+      {...rest}
+    />
   );
 };

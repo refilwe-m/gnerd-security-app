@@ -1,19 +1,13 @@
 import "tailwindcss/tailwind.css";
 import "./App.css";
-import { AppTemplate, Button, Heading, InputField } from "./components";
+import { AppTemplate, Heading } from "./components";
+import { InputForm } from "./components/common/form/form";
 
 function App() {
   return (
     <AppTemplate>
       <Heading />
-      <section className="flex flex-col items-center">
-        <InputField placeholderText={"Full Name"} />
-        <InputField placeholderText={"Website"} />
-        <InputField placeholderText={"Password"} />
-        <Button btnStyles="styled" styles="" onClick={hep}>
-          Click Me
-        </Button>
-      </section>
+      <InputForm />
     </AppTemplate>
   );
 }
