@@ -33,10 +33,8 @@ export const InputForm: FC = () => {
     return errors;
   };
 
-  const handleSubmit = (values: FormValues) => {
-    console.log("website:", values.website);
-    console.log("username:", values.username);
-    console.log("password:", values.password);
+  const handleSubmit = () => {
+
   };
 
   return (
@@ -85,7 +83,7 @@ export const InputForm: FC = () => {
             </>
           )}
         />
-        <Button btnStyles="filled" type="submit">
+        <Button styles="filled" >
           Add Credentials
         </Button>
       </Form>
