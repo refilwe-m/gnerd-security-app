@@ -10,6 +10,7 @@ export default {
         primary: "#713FC8",
         purple: "#773FC7",
         green: "#3FB950",
+        error: "#EE4B2B",
       },
     },
   },
