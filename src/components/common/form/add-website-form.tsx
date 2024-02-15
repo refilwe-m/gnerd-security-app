@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FieldProps } from "formik";
 import { FC } from "react";
 import { Button, InputField } from "..";
 
@@ -48,7 +48,7 @@ export const InputForm: FC = () => {
       <Form className="flex flex-col items-center gap-3">
         <Field
           name="website"
-          render={({ ...field }) => (
+          render={({field}: FieldProps) => (
             <>
               <InputField {...field} placeholder={"Website"} />
               <ErrorMessage
@@ -61,7 +61,7 @@ export const InputForm: FC = () => {
         />
         <Field
           name="username"
-          render={({ ...field }) => (
+          render={({field}: FieldProps) => (
             <>
               <InputField {...field} placeholder={"Username"} />
               <ErrorMessage
@@ -74,7 +74,7 @@ export const InputForm: FC = () => {
         />
         <Field
           name="password"
-          render={({ ...field }) => (
+          render={({field}: FieldProps) => (
             <>
               <InputField {...field} placeholder={"Password"} />
               <ErrorMessage
