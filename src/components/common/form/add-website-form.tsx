@@ -83,7 +83,7 @@ export const InputForm: FC = () => {
             </>
           )}
         />
-        <Button styles="filled" onClick={handleSubmit} >
+        <Button btnStyles="filled" onClick={handleSubmit} >
           Add Credentials
         </Button>
       </Form>
