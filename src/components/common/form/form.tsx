@@ -51,7 +51,11 @@ export const InputForm: FC = () => {
           render={({ ...field }) => (
             <>
               <InputField {...field} placeholder={"Website"} />
-              <ErrorMessage name="website" component="div" />
+              <ErrorMessage
+                name="website"
+                component="div"
+                className="text-error"
+              />
             </>
           )}
         />
@@ -60,21 +64,30 @@ export const InputForm: FC = () => {
           render={({ ...field }) => (
             <>
               <InputField {...field} placeholder={"Username"} />
-              <ErrorMessage name="username" component="div" />
+              <ErrorMessage
+                name="username"
+                component="div"
+                className="text-error"
+              />
             </>
           )}
         />
         <Field
           name="password"
-          render={({...field }) => (
+          render={({ ...field }) => (
             <>
               <InputField {...field} placeholder={"Password"} />
-              <ErrorMessage name="password" component="div" />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className="text-error"
+              />
             </>
           )}
         />
-        <Button btnStyles = "filled" type="submit">Add Credentials</Button>
-       
+        <Button btnStyles="filled" type="submit">
+          Add Credentials
+        </Button>
       </Form>
     </Formik>
   );
