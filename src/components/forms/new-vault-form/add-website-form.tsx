@@ -2,6 +2,7 @@ import { Form, Formik } from "formik";
 import { FC } from "react";
 import { Button, InputField } from "../../common";
 import { useAppStore } from "../../../stores";
+import toast from "react-hot-toast";
 
 interface FormValues {
   vaultName: string;
@@ -12,9 +13,9 @@ interface FormValues {
 export const InputForm: FC = () => {
   const { addVault } = useAppStore();
   const initialValues: FormValues = {
-    vaultName: "Web",
-    username: "user",
-    password: "Pas$w0rd",
+    vaultName: "",
+    username: "",
+    password: "",
   };
 
   const validate = (values: FormValues) => {
@@ -37,7 +38,7 @@ export const InputForm: FC = () => {
 
   const submit = (values) => {
     addVault(values);
-    Toast()
+    toast.success("Vault Added Successfully!");
   };
 
   return (
