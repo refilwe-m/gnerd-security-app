@@ -17,9 +17,9 @@ export const SearchBar = () => {
         });
 
   return (
-    <section className="top-16 w-72">
+    <section className="top-16 w-full flex justify-center items-center lg:w-72">
       <Combobox value={selectedVault} onChange={setSelectedVault}>
-        <div className="relative mt-1">
+        <div className="relative w-full mt-1">
           <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
             <Combobox.Input
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"

@@ -1,5 +1,5 @@
 export type ButtonProps = {
-  onClick: () => void;
+  onClick: (e: any) => void;
   variant?: "outline" | "filled" | "text";
   styles?: string;
 };

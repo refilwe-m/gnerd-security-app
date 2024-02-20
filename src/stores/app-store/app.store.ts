@@ -11,21 +11,9 @@ export const useAppStore = create<AppStore>((set) => ({
       username: "gugu.mokwena",
       password: "password",
     },
-    {
-      id: 2,
-      vaultName: "Refilwe_Vault",
-      website: "www.gnerd.com",
-      username: "gugu.mokwena",
-      password: "password",
-    },
-    {
-      id: 3,
-      vaultName: "Gugu_Vault",
-      website: "www.gnerd.com",
-      username: "gugu.mokwena",
-      password: "password",
-    },
-    
   ],
-  addVault: (vault) => set((state) => ({ vault: [...state.vault, vault] })),
+  addVault: (vault) =>
+    set((state) => ({
+      vault: [...state.vault, { id: state.vault?.length + 1, ...vault }],
+    })),
 }));

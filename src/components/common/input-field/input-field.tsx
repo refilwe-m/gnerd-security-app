@@ -1,15 +1,17 @@
-import React, { InputHTMLAttributes } from 'react';
+import { useField } from "formik";
+import { FC, InputHTMLAttributes } from "react";
 
 interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
 }
 
-export const InputField: React.FC<InputFieldProps> = ({ placeholder, ...rest }) => {
+export const InputField: FC<InputFieldProps> = ({ placeholder, ...rest }) => {
+  const [field] = useField(rest?.name ?? "");
   return (
     <input
-      className="border rounded-lg py-2 px-3"
+      className="border w-full rounded-lg py-2 px-3"
       placeholder={placeholder}
-      {...rest}
+      {...field}
     />
   );
 };
