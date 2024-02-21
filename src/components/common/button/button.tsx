@@ -23,7 +23,8 @@ export const Button: FC<ChildrenProps & ButtonProps> = ({
   }
   return (
     <button
-      className={`${styles || btnStyles} py-3 font-bold w-full lg:w-1/4 px-6`}
+      type="submit"
+      className={`${styles || btnStyles} py-3 font-bold w-full px-6`}
     >
       {children}
     </button>

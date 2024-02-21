@@ -4,8 +4,8 @@ import { useAppStore } from "../../../stores";
 export const NavBar = () => {
   const { user } = useAppStore();
   return (
-    <nav className="flex justify-between items-center px-3">
-      <h4 className="text-lg py-2 text-white font-light hover:text-green">
+    <nav className="flex w-full lg:justify-between items-center py-2 px-3">
+      <h4 className="invisible text-xs md:visible md:text-base lg:text-lg text-green font-light hover:text-primary">
         {`Hi, ${user.name}`}
       </h4>
       <SearchBar />

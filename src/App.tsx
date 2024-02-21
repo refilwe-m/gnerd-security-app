@@ -1,12 +1,18 @@
 import "tailwindcss/tailwind.css";
 import "./App.css";
-import { AppTemplate, Heading } from "./components";
-
+import { AppTemplate, FormTemplate, Heading, InputForm } from "./components";
+import { Toaster } from "react-hot-toast";
 function App() {
   return (
-    <AppTemplate>
-      <Heading />
-    </AppTemplate>
+    <>
+      <Toaster position="top-center" />
+      <AppTemplate>
+        <Heading />
+        <FormTemplate>
+          <InputForm />
+        </FormTemplate>
+      </AppTemplate>
+    </>
   );
 }
 

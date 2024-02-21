@@ -1,16 +1,19 @@
-import { Formik, Form, Field, ErrorMessage, FieldProps } from "formik";
+import { Form, Formik } from "formik";
 import { FC } from "react";
 import { Button, InputField } from "../../common";
+import { useAppStore } from "../../../stores";
+import toast from "react-hot-toast";
 
 interface FormValues {
-  website: string;
+  vaultName: string;
   username: string;
   password: string;
 }
 
 export const InputForm: FC = () => {
+  const { addVault } = useAppStore();
   const initialValues: FormValues = {
-    website: "",
+    vaultName: "",
     username: "",
     password: "",
   };
@@ -18,8 +21,8 @@ export const InputForm: FC = () => {
   const validate = (values: FormValues) => {
     const errors: Partial<FormValues> = {};
 
-    if (!values.website) {
-      errors.website = "Website Required";
+    if (!values.vaultName) {
+      errors.vaultName = "Website Required";
     }
 
     if (!values.username) {
@@ -33,58 +36,41 @@ export const InputForm: FC = () => {
     return errors;
   };
 
-  const handleSubmit = () => {};
+  const submit = (values) => {
+    addVault(values);
+    toast.success("Vault Added Successfully!");
+  };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validate={validate}
-      onSubmit={handleSubmit}
-    >
-      <Form className="flex flex-col items-center gap-3">
-        <Field
-          name="website"
-          render={({ field }: FieldProps) => (
-            <>
-              <InputField {...field} placeholder={"Website"} />
-              <ErrorMessage
-                name="website"
-                component="div"
-                className="text-error"
-              />
-            </>
-          )}
-        />
-        <Field
-          name="username"
-          render={({ field }: FieldProps) => (
-            <>
-              <InputField {...field} placeholder={"Username"} />
-              <ErrorMessage
-                name="username"
-                component="div"
-                className="text-error"
-              />
-            </>
-          )}
-        />
-        <Field
-          name="password"
-          render={({ field }: FieldProps) => (
-            <>
-              <InputField {...field} placeholder={"Password"} />
-              <ErrorMessage
-                name="password"
-                component="div"
-                className="text-error"
-              />
-            </>
-          )}
-        />
-        <Button btnStyles="filled" onClick={handleSubmit}>
-          Add Credentials
-        </Button>
-      </Form>
+    <Formik initialValues={initialValues} validate={validate} onSubmit={submit}>
+      {({ values, errors }) => (
+        <Form className="flex flex-col w-full lg:w-[30%] items-center gap-3">
+          <InputField
+            error={errors.vaultName}
+            name="vaultName"
+            placeholder={"Website Name"}
+          />
+          <InputField
+            error={errors?.username}
+            name="username"
+            placeholder={"Username"}
+          />
+          <InputField
+            error={errors?.password}
+            name="password"
+            placeholder={"Password"}
+          />
+          <Button
+            variant="outline"
+            onClick={(e) => {
+              e.preventDefault();
+              submit(values);
+            }}
+          >
+            Add Credentials
+          </Button>
+        </Form>
+      )}
     </Formik>
   );
 };

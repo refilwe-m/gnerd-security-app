@@ -5,7 +5,7 @@ export type AppStore = {
 };
 
 export type Vault = {
-  id: number;
+  id?: number;
   vaultName: string;
   website?: string;
   username: string;
