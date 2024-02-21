@@ -37,7 +37,7 @@ export const Popup: FC<PopupProps> = ({ isOpen = false, vault }) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/25" />
+            <div className="fixed inset-0 bg-black/25 text-white" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -51,10 +51,10 @@ export const Popup: FC<PopupProps> = ({ isOpen = false, vault }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl shadow-green bg-background p-6 text-left align-middle shadow-lg transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-semibold flex justify-center pb-3 leading-6 text-gray-900"
+                    className="text-lg font-semibold flex justify-center pb-3 leading-6 text-white"
                   >
                     Your Vault Details
                   </Dialog.Title>
@@ -71,7 +71,7 @@ export const Popup: FC<PopupProps> = ({ isOpen = false, vault }) => {
                   <div className="mt-4 flex justify-center">
                     <button
                       type="button"
-                      className="inline-flex justify-center items-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center items-center rounded-md border border-transparent bg-blue-200 px-4 py-2 text-sm font-medium text-blue-700 hover:bg-blue-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
                       Got it, thanks!
