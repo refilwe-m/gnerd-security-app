@@ -26,10 +26,10 @@ export const InputField: FC<InputFieldProps> = ({
   const password = l_sequence.concat(n_sequence, s_sequence).sort(() => Math.random() - 0.5).join("");
 
   if (password.length < 6) {
-    return generatePassword(); 
+    generatePassword(); 
   }
     helpers.setValue(password);
-    return password
+  
   };
 
   return (
