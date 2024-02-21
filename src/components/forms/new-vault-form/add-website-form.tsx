@@ -44,7 +44,7 @@ export const InputForm: FC = () => {
     return errors;
   };
 
-  const submit = (values) => {
+  const submit = (values: FormValues) => {
     addVault(values);
     toast.success("Vault Added Successfully!");
   };
@@ -85,6 +85,7 @@ export const InputForm: FC = () => {
               fillerButton
               error={errors?.password}
               name="password"
+              type="password"
               placeholder={"Password"}
             />
             <Button
