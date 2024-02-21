@@ -1,6 +1,5 @@
 import { useField } from "formik";
 import { FC, InputHTMLAttributes } from "react";
-import { Button } from "..";
 
 interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
@@ -16,22 +15,24 @@ export const InputField: FC<InputFieldProps> = ({
   const [field] = useField(rest?.name ?? "");
   return (
     <section className="flex flex-col w-full">
-      <section className="flex justify-between items-center w-full">
+      <section className="flex flex-col gap-3 md:gap-0 md:flex-row justify-between items-center w-full">
         <input
           className={`border w-full ${
-            fillerButton ? "rounded-l-lg" : "rounded-lg"
+            fillerButton
+              ? "rounded-lg md:rounded-l-lg md:rounded-none"
+              : "rounded-lg"
           } py-2 px-3 focus:ring-2 focus:ring-primary focus:outline-none`}
           placeholder={placeholder}
           {...field}
         />
         {fillerButton && (
-          <Button
-            variant="filled"
-            styles="text-xs text-white border border-primary bg-primary rounded-r-lg py-2"
+          <button
+            type="button"
+            className="py-3 font-bold w-full px-6 text-xs text-white border border-primary bg-primary rounded-lg md:rounded-r-lg md:rounded-none"
             onClick={() => console.log("Thinking....")}
           >
             Generate Password
-          </Button>
+          </button>
         )}
       </section>
       <p className="text-red-500 text-xs">{rest.error}</p>

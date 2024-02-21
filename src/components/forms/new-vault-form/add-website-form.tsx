@@ -14,6 +14,7 @@ interface FormValues {
 export const InputForm: FC = () => {
   const { addVault } = useAppStore();
   const [showUrl, setEnabled] = useState(true);
+  const toggleUrl = () => setEnabled(!showUrl);
 
   const initialValues: FormValues = {
     vaultName: "",
@@ -25,26 +26,35 @@ export const InputForm: FC = () => {
   const validate = (values: FormValues) => {
     const errors: Partial<FormValues> = {};
 
-    if (!values.vaultName) {
-      errors.vaultName = "Website Required";
-    }
+    errors.vaultName = !values.vaultName
+      ? "Website Required"
+      : values.vaultName.length < 3 || values.vaultName.length > 16
+      ? "Website Name must be between 3 and 16 characters"
+      : undefined;
 
     if (!values.username) {
       errors.username = "Username Required";
     }
 
-    if (!values.password) {
-      errors.password = "Password Required";
-    }
+    errors.password = !values.password
+      ? "Password Required"
+      : values.password.length < 8
+      ? "Password must be at least 8 characters"
+      : undefined;
 
-    if (!values.url) {
+    if (!values.url && showUrl) {
       errors.url = "URL Required";
+    }
+    if (!showUrl) {
+      values.url = "";
+      errors.url = undefined;
     }
 
     return errors;
   };
 
   const submit = (values: FormValues) => {
+    console.log("Values", values);
     addVault(values);
     toast.success("Vault Added Successfully!");
   };
@@ -61,7 +71,7 @@ export const InputForm: FC = () => {
             <div className="flex flex-col items-end justify-center w-full h-full inline-block">
               <span className="text-white inline-flex gap-2">
                 Show URL
-                <Toggle showUrl={showUrl} setEnabled={setEnabled} />
+                <Toggle showUrl={showUrl} setEnabled={toggleUrl} />
               </span>
             </div>
             <InputField
@@ -88,10 +98,18 @@ export const InputForm: FC = () => {
               type="password"
               placeholder={"Password"}
             />
+            {errors && (
+              <section className="text-red-500 text-xs">
+                {Object.values(errors).map((error) => (
+                  <p key={error}>{error}</p>
+                ))}
+              </section>
+            )}
             <Button
               variant="outline"
               onClick={(e) => {
                 e.preventDefault();
+                console.log(errors);
                 submit(values);
               }}
             >
