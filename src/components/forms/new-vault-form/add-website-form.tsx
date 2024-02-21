@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import { Button, InputField, Toggle } from "../../common";
 import { useAppStore } from "../../../stores";
 import toast from "react-hot-toast";
-
+import { isUndefined } from "lodash";
 interface FormValues {
   vaultName: string;
   username: string;
@@ -14,7 +14,6 @@ interface FormValues {
 export const InputForm: FC = () => {
   const { addVault } = useAppStore();
   const [showUrl, setEnabled] = useState(true);
-  const toggleUrl = () => setEnabled(!showUrl);
 
   const initialValues: FormValues = {
     vaultName: "",
@@ -38,8 +37,8 @@ export const InputForm: FC = () => {
 
     errors.password = !values.password
       ? "Password Required"
-      : values.password.length < 8
-      ? "Password must be at least 8 characters"
+      : values.password.length < 6
+      ? "Password must be at least 6 characters"
       : undefined;
 
     if (!values.url && showUrl) {
@@ -47,14 +46,15 @@ export const InputForm: FC = () => {
     }
     if (!showUrl) {
       values.url = "";
-      errors.url = undefined;
     }
 
+    if (isUndefined(errors.vaultName) || isUndefined(errors.password)) {
+      return;
+    }
     return errors;
   };
 
   const submit = (values: FormValues) => {
-    console.log("Values", values);
     addVault(values);
     toast.success("Vault Added Successfully!");
   };
@@ -66,12 +66,12 @@ export const InputForm: FC = () => {
         validate={validate}
         onSubmit={submit}
       >
-        {({ values, errors }) => (
+        {({ values, errors, setFieldValue, setFieldError }) => (
           <Form className="flex flex-col w-full lg:w-[30%] items-center gap-3">
-            <div className="flex flex-col items-end justify-center w-full h-full inline-block">
+            <div className="flex flex-col items-end justify-center w-full h-full">
               <span className="text-white inline-flex gap-2">
                 Show URL
-                <Toggle showUrl={showUrl} setEnabled={toggleUrl} />
+                <Toggle showUrl={showUrl} setEnabled={setEnabled} />
               </span>
             </div>
             <InputField
@@ -82,6 +82,10 @@ export const InputForm: FC = () => {
             {showUrl && (
               <InputField
                 error={errors.url}
+                onChange={() => {
+                  if (!showUrl) setFieldValue("url", " ");
+                  setFieldError("url", " ");
+                }}
                 name="url"
                 placeholder={"Website URL e.g https://example.com"}
               />
@@ -98,18 +102,10 @@ export const InputForm: FC = () => {
               type="password"
               placeholder={"Password"}
             />
-            {errors && (
-              <section className="text-red-500 text-xs">
-                {Object.values(errors).map((error) => (
-                  <p key={error}>{error}</p>
-                ))}
-              </section>
-            )}
             <Button
               variant="outline"
               onClick={(e) => {
                 e.preventDefault();
-                console.log(errors);
                 submit(values);
               }}
             >
