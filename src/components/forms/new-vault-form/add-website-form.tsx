@@ -67,6 +67,7 @@ export const InputForm: FC = () => {
             placeholder={"Username"}
           />
           <InputField
+            fillerButton
             error={errors?.password}
             name="password"
             placeholder={"Password"}
