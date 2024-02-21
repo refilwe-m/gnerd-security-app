@@ -18,9 +18,9 @@ export const InputField: FC<InputFieldProps> = ({
     <section className="flex flex-col w-full">
       <section className="flex justify-between items-center w-full">
         <input
-          className={`border w-full rounded${
-            fillerButton ? "-l" : ""
-          }-lg py-2 px-3 focus:ring-2 focus:ring-primary focus:outline-none`}
+          className={`border w-full ${
+            fillerButton ? "rounded-l-lg" : "rounded-lg"
+          } py-2 px-3 focus:ring-2 focus:ring-primary focus:outline-none`}
           placeholder={placeholder}
           {...field}
         />
