@@ -46,7 +46,6 @@ export const SearchBar = () => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
               afterLeave={() => {
-                console.log("Selected vault", selectedVault);
                 selectedVault && open(true);
                 setQuery("");
               }}
