@@ -58,7 +58,7 @@ export const InputForm: FC = () => {
       >
         {({ values, errors }) => (
           <Form className="flex flex-col w-full lg:w-[30%] items-center gap-3">
-            <div className="flex flex-col items-end justify-center w-full h-full  inline-block">
+            <div className="flex flex-col items-end justify-center w-full h-full inline-block">
               <span className="text-white inline-flex gap-2">
                 Show URL
                 <Toggle showUrl={showUrl} setEnabled={setEnabled} />
