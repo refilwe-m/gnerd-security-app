@@ -14,7 +14,7 @@ export const InputField: FC<InputFieldProps> = ({
 }) => {
   const [field, , helpers] = useField(rest?.name ?? "");
 
-  const generatePassword = () => {
+  const generatePassword = (): string => {
     const letters = [
       "a",
       "b",

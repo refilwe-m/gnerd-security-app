@@ -1,13 +1,7 @@
 import { Toaster } from "react-hot-toast";
 import "tailwindcss/tailwind.css";
 import "./App.css";
-import {
-  AppTemplate,
-  FormTemplate,
-  Heading,
-  InputForm,
-  Popup,
-} from "./components";
+import { AppTemplate, FormTemplate, Heading, InputForm } from "./components";
 
 function App() {
   return (
@@ -18,7 +12,6 @@ function App() {
         <FormTemplate>
           <InputForm />
         </FormTemplate>
-        <Popup />
       </AppTemplate>
     </>
   );
