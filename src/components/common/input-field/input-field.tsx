@@ -11,7 +11,7 @@ export const InputField: FC<InputFieldProps> = ({ placeholder, ...rest }) => {
   return (
     <section className="flex flex-col w-full">
       <input
-        className="border w-full rounded-lg py-2 px-3"
+        className="border w-full rounded-lg py-2 px-3 focus:ring-2 focus:ring-primary focus:outline-none"
         placeholder={placeholder}
         {...field}
       />
