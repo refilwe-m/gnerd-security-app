@@ -1,6 +1,14 @@
 import { create } from "zustand";
 import { AppStore } from "./types";
 
+export const defaultVault = {
+  id: 0,
+  vaultName: "",
+  website: "",
+  username: "",
+  password: "",
+};
+
 export const useAppStore = create<AppStore>((set) => ({
   user: { name: "Gugu Mokwena" },
   vault: [
