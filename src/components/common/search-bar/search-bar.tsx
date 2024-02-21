@@ -3,13 +3,12 @@ import { Combobox, Transition } from "@headlessui/react";
 import { IoIosSearch } from "react-icons/io";
 import { HiCheck } from "react-icons/hi";
 import { useAppStore } from "../../../stores";
-import { useModal } from "../../../hooks";
 import { Popup } from "..";
 import { Vault } from "../../../stores/app-store/types";
 
 export const SearchBar = () => {
   const { vault } = useAppStore();
-  const { isOpen, open } = useModal();
+  const [isOpen, open] = useState(false);
   const [selectedVault, setSelectedVault] = useState<Vault>({
     id: 0,
     vaultName: "",
@@ -48,7 +47,7 @@ export const SearchBar = () => {
               leaveTo="opacity-0"
               afterLeave={() => {
                 console.log("Selected vault", selectedVault);
-                selectedVault && open();
+                selectedVault && open(true);
                 setQuery("");
               }}
             >

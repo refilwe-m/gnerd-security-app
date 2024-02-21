@@ -10,9 +10,10 @@ type PopupProps = {
 
 export const Popup: FC<PopupProps> = ({ isOpen = false, vault }) => {
   const [opened, setIsOpened] = useState(false);
-  const closeModal = () => setIsOpened(false);
+  const closeModal = () => {
+    setIsOpened(false);
+  };
   const labels = {
-    id: "ID",
     vaultName: "Vault Name",
     username: "Username",
     website: "URL",
@@ -20,9 +21,9 @@ export const Popup: FC<PopupProps> = ({ isOpen = false, vault }) => {
   };
 
   useEffect(() => {
-    setIsOpened(isOpen);
-  }, [isOpen]);
-  console.log("Vault", vault);
+    vault?.id !== 0 && setIsOpened(isOpen);
+  }, [isOpen, vault]);
+
   return (
     <>
       <Transition appear show={opened} as={Fragment}>
@@ -53,24 +54,24 @@ export const Popup: FC<PopupProps> = ({ isOpen = false, vault }) => {
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-lg font-semibold flex justify-center pb-3 leading-6 text-gray-900"
                   >
                     Your Vault Details
                   </Dialog.Title>
-                  <div className="mt-2">
-                    {Object.keys(vault)?.map((key) => (
+                  <div className="py-2 flex flex-col gap-2">
+                    {Object.keys(labels)?.map((key) => (
                       <TextBox
                         key={key}
-                        label={labels?.[key]}
-                        text={vault?.[key]}
+                        label={labels?.[key as keyof typeof labels]}
+                        text={vault?.[key as keyof typeof vault] as string}
                       />
                     ))}
                   </div>
 
-                  <div className="mt-4">
+                  <div className="mt-4 flex justify-center">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center items-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
                       Got it, thanks!
