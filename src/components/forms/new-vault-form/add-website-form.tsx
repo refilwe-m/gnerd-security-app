@@ -45,9 +45,21 @@ export const InputForm: FC = () => {
     <Formik initialValues={initialValues} validate={validate} onSubmit={submit}>
       {({ values, errors }) => (
         <Form className="flex flex-col w-full lg:w-[30%] items-center gap-3">
-          <InputField name="vaultName" placeholder={"Website Name"} />
-          <InputField name="username" placeholder={"Username"} />
-          <InputField name="password" placeholder={"Password"} />
+          <InputField
+            error={errors.vaultName}
+            name="vaultName"
+            placeholder={"Website Name"}
+          />
+          <InputField
+            error={errors?.username}
+            name="username"
+            placeholder={"Username"}
+          />
+          <InputField
+            error={errors?.password}
+            name="password"
+            placeholder={"Password"}
+          />
           <Button
             variant="outline"
             onClick={(e) => {
