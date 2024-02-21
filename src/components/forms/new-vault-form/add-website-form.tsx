@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 interface FormValues {
   vaultName: string;
   username: string;
+  url?: string;
   password: string;
 }
 
@@ -15,6 +16,7 @@ export const InputForm: FC = () => {
   const initialValues: FormValues = {
     vaultName: "",
     username: "",
+    url: "",
     password: "",
   };
 
@@ -31,6 +33,10 @@ export const InputForm: FC = () => {
 
     if (!values.password) {
       errors.password = "Password Required";
+    }
+
+    if (!values.url) {
+      errors.url = "URL Required";
     }
 
     return errors;
@@ -51,7 +57,12 @@ export const InputForm: FC = () => {
             placeholder={"Website Name"}
           />
           <InputField
-            error={errors?.username}
+            error={errors.url}
+            name="url"
+            placeholder={"Website URL e.g https://example.com"}
+          />
+          <InputField
+            error={errors?.username ?? ""}
             name="username"
             placeholder={"Username"}
           />

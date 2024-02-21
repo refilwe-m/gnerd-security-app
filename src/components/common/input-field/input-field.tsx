@@ -3,7 +3,7 @@ import { FC, InputHTMLAttributes } from "react";
 
 interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
-  error: string;
+  error?: string;
 }
 
 export const InputField: FC<InputFieldProps> = ({ placeholder, ...rest }) => {
