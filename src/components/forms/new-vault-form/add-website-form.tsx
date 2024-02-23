@@ -14,13 +14,12 @@ interface FormValues {
 export const InputForm: FC = () => {
   const { addVault } = useAppStore();
   const [showUrl, setEnabled] = useState(true);
-
-  const initialValues: FormValues = {
+  const [initialValues, setInitialValues] = useState({
     vaultName: "",
     username: "",
     url: "",
     password: "",
-  };
+  });
 
   const validate = (values: FormValues) => {
     const errors: Partial<FormValues> = {};
@@ -57,11 +56,16 @@ export const InputForm: FC = () => {
   const submit = (values: FormValues) => {
     addVault(values);
     toast.success("Vault Added Successfully!");
+    values.password = "";
+    values.url = "";
+    values.username = "";
+    values.vaultName = "";
   };
 
   return (
     <>
       <Formik
+        enableReinitialize
         initialValues={initialValues}
         validate={validate}
         onSubmit={submit}
@@ -70,7 +74,7 @@ export const InputForm: FC = () => {
           <Form className="flex flex-col w-full lg:w-[30%] items-center gap-3">
             <div className="flex flex-col items-end justify-center w-full h-full">
               <span className="text-white inline-flex gap-2">
-                Show URL
+                Add URL
                 <Toggle showUrl={showUrl} setEnabled={setEnabled} />
               </span>
             </div>

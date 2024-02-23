@@ -13,7 +13,7 @@ export const Toggle: FC<ToggleProps> = ({ showUrl, setEnabled }) => {
         checked={showUrl}
         onChange={setEnabled}
         className={`${
-          showUrl ? "bg-green" : "bg-purple"
+          showUrl ? "bg-green" : "bg-gray-400"
         } relative inline-flex h-6 w-11 items-center rounded-full`}
       >
         <span

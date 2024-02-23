@@ -19,6 +19,13 @@ export const useAppStore = create<AppStore>((set) => ({
       username: "gugu.mokwena",
       password: "password",
     },
+    {
+      id: 1,
+      vaultName: "Facebook",
+      website: "www.facebook.com",
+      username: "gugu012",
+      password: "pa$swOrd",
+    },
   ],
   addVault: (vault) =>
     set((state) => ({
