@@ -14,12 +14,12 @@ interface FormValues {
 export const InputForm: FC = () => {
   const { addVault } = useAppStore();
   const [showUrl, setEnabled] = useState(true);
-  const [initialValues, setInitialValues] = useState({
+  const initialValues = {
     vaultName: "",
     username: "",
     url: "",
     password: "",
-  });
+  };
 
   const validate = (values: FormValues) => {
     const errors: Partial<FormValues> = {};
