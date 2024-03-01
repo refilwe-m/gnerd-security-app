@@ -59,13 +59,16 @@ export const Popup: FC<PopupProps> = ({ isOpen = false, vault }) => {
                     Your Vault Details
                   </Dialog.Title>
                   <div className="py-2 flex flex-col gap-2">
-                    {Object.keys(labels)?.map((key) => (
-                      <TextBox
-                        key={key}
-                        label={labels?.[key as keyof typeof labels]}
-                        text={vault?.[key as keyof typeof vault] as string}
-                      />
-                    ))}
+                    {Object.keys(labels)?.map(
+                      (key) =>
+                        !!(vault?.[key as keyof typeof vault] as string) && (
+                          <TextBox
+                            key={key}
+                            label={labels?.[key as keyof typeof labels]}
+                            text={vault?.[key as keyof typeof vault] as string}
+                          />
+                        )
+                    )}
                   </div>
 
                   <div className="mt-4 flex justify-center">
